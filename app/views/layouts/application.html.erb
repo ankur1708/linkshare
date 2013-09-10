@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CrowdLink: Share the useful links to your friends and rest of us</title>
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"/>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="navbar" class="navbar navbar-inverse navbar-fixed-top down" id="header">
+    <div class="navbar-inner">
+        <div class="container">
+			<a class="brand" href="#">CrowdLink <span class="small-meta">beta</span></a>
+			<div class="nav-collapse collapse">
+				<ul id="main-menu" class="nav pull-right">
+					<li id="menu-item-home" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-62">
+						<a href="#">Home</a>
+					</li>
+					<li id="menu-item-post" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-62">
+						<a data-toggle="modal" href="#linkModal">Add a Link</a>
+					</li>
+					<li id="menu-item-login" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-62">
+						<a data-toggle="modal" href="#betaModal">Login</a>
+					</li>
+					
+				</ul>
+			</div>
+        </div>
+    </div>
+</div>
+<div id="betaModal" class="modal hide fade">
+    <div class="modal-header">
+            <button class="close" data-dismiss="modal">×</button>
+            	<div class="row-fluid">
+        			<div class="span12">
+            			<div class="span6">
+            				<h3>Sign In</h3>
+            			</div>
+            			<div class="span6">
+            				<h3>Request an Invite</h3>
+            			</div>
+            		</div>
+            	</div>
+    </div>
+<div class="modal-body">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="span5">
+              <%= form_tag sessions_path, :class => 'form-horizontal'  do %>
+  				<p class="help-block">
+    				<%= label_tag :email %>
+    			</p>
+    				<%= text_field_tag :email, params[:email], :placeholder => 'someone@example.com', :type => 'email' %>
+  				<p class="help-block">
+    				<%= label_tag :password %>
+    			</p>
+    				<%= password_field_tag :password %>
+    			<hr>
+  				<div class="help-block">
+  					<%= submit_tag "Log in", :class => 'btn btn-success' %>
+  					<a href="#" class="btn btn-link">Forgot password</a>
+  				</div>
+				<% end %>
+            </div>
+            <div class="span6 pull-right">
+             <%= form_tag subscribers_path, :class => 'form-horizontal'  do %>
+  				<p class="help-block">
+    				<%= label_tag :email %>
+    			</p>
+    				<%= text_field_tag :email, params[:email], :placeholder => 'someone@example.com', :type => 'email' %>
+  				
+    			<hr>
+  				<div class="help-block">
+  					<%= submit_tag "Request Invite", :class => 'btn btn-info' %>
+  				</div>
+				<% end %>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-link">Help?</a>
+    </div>
+</div>
+
+<div id="linkModal" class="modal hide fade">
+    <div class="modal-header">
+            <button class="close" data-dismiss="modal">×</button>
+            <div class="row-fluid">
+        		<h3>Add a new Link</h3>
+        	</div>
+    </div>
+    <div class="modal-body">
+    	<div class="row-fluid">
+        	<div class="span12">
+        		 <%= form_tag posts_path, :class => 'form-horizontal'  do %>
+  				<p class="help-block">
+    				<%= label_tag :title %>
+    			</p>
+    				<%= text_field_tag :title, params[:email], :placeholder => 'Title' %>
+  				<p class="help-block">
+    				<%= label_tag :url %>
+    			</p>
+    				<%= text_field_tag :url, params[:url], :placeholder => 'http://youjizz.com/...' %>
+    			<p class="help-block">
+    				<%= label_tag :description %>
+    			</p>
+    				<%= text_field_tag :description, params[:description], :placeholder => 'Cute blond girl having sex' %>
+    			<hr>
+  				<div class="help-block">
+  					<%= submit_tag "Submit", :class => 'btn btn-success' %>
+  				</div>
+				<% end %>
+        	</div>
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<div class="breadcrumb">
+ <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+<%= yield %>
+
+</body>
+<script type="text/javascript" src="http://jsfiddle.net/5NQCd/4/ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43728724-1', 'nameless-forest-9333.herokuapp.com');
+  ga('send', 'pageview');
+
+</script>
+</html>

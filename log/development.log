@@ -1,0 +1,2829 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (4.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130903100321')
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePosts (20130903100328)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "posts" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130903100328')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateTags (20130903100413)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "tags" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130903100413')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+Migrating to CreatePosts (20130903100328)
+Migrating to CreateTags (20130903100413)
+Migrating to CreateAssignments (20130903101505)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "assignments" ("id" serial primary key, "user_id" integer NOT NULL, "post_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "index_assignments_on_user_id_and_post_id" ON "assignments" ("user_id", "post_id")
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130903101505')[0m
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+Migrating to CreatePosts (20130903100328)
+Migrating to CreateTags (20130903100413)
+Migrating to CreateAssignments (20130903101505)
+Migrating to CreateDownvotePosts (20130903102917)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (5.7ms)[0m  [1mCREATE TABLE "downvote_posts" ("id" serial primary key, "user_id" integer NOT NULL, "post_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_downvote_posts_on_user_id_and_post_id" ON "downvote_posts" ("user_id", "post_id")
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130903102917')[0m
+  [1m[35m (1.0ms)[0m  COMMIT
+Migrating to CreateUpvotePosts (20130903102927)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (3.3ms)[0m  CREATE TABLE "upvote_posts" ("id" serial primary key, "user_id" integer NOT NULL, "post_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "index_upvote_posts_on_user_id_and_post_id" ON "upvote_posts" ("user_id", "post_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130903102927')
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSeenPosts (20130903102934)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "seen_posts" ("id" serial primary key, "user_id" integer NOT NULL, "post_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "index_seen_posts_on_user_id_and_post_id" ON "seen_posts" ("user_id", "post_id")
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130903102934')[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to CreateWatchLaterPosts (20130903102943)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (4.3ms)[0m  CREATE TABLE "watch_later_posts" ("id" serial primary key, "user_id" integer NOT NULL, "post_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.3ms)[0m  [1mCREATE UNIQUE INDEX "index_watch_later_posts_on_user_id_and_post_id" ON "watch_later_posts" ("user_id", "post_id")[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130903102943')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSubscribers (20130903102959)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "subscribers" ("id" serial primary key, "email" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130903102959')
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2013-09-03 16:19:37 +0530
+Connecting to database specified by database.yml
+Served asset /rails.png - 200 OK (30ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-09-03 16:19:39 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered users/index.html.erb within layouts/application (18.6ms)
+Compiled downvote_posts.css  (26ms)  (pid 2389)
+Compiled posts.css  (1ms)  (pid 2389)
+Compiled scaffolds.css  (11ms)  (pid 2389)
+Compiled seen_posts.css  (2ms)  (pid 2389)
+Compiled subscribers.css  (2ms)  (pid 2389)
+Compiled tags.css  (1ms)  (pid 2389)
+Compiled upvote_posts.css  (2ms)  (pid 2389)
+Compiled users.css  (1ms)  (pid 2389)
+Compiled watch_later_posts.css  (1ms)  (pid 2389)
+Compiled application.css  (168ms)  (pid 2389)
+Compiled jquery.js  (3ms)  (pid 2389)
+Compiled jquery_ujs.js  (0ms)  (pid 2389)
+Compiled downvote_posts.js  (1085ms)  (pid 2389)
+Compiled posts.js  (145ms)  (pid 2389)
+Compiled seen_posts.js  (146ms)  (pid 2389)
+Compiled subscribers.js  (157ms)  (pid 2389)
+Compiled tags.js  (137ms)  (pid 2389)
+Compiled upvote_posts.js  (131ms)  (pid 2389)
+Compiled users.js  (149ms)  (pid 2389)
+Compiled watch_later_posts.js  (129ms)  (pid 2389)
+Compiled application.js  (2249ms)  (pid 2389)
+Completed 200 OK in 2737ms (Views: 2660.5ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" 
+  Rendered users/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /application.css - 200 OK (22ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /seen_posts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /subscribers.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /downvote_posts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /users.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /users.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /upvote_posts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /posts.css - 200 OK (2ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /tags.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /scaffolds.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /downvote_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /seen_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /application.js - 200 OK (16ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /upvote_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /subscribers.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /tags.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:42 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:43 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-09-03 16:19:49 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 15ms (Views: 10.0ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:49 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:49 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:49 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:49 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:49 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:49 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:49 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 16:19:50 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+Migrating to CreatePosts (20130903100328)
+Migrating to CreateTags (20130903100413)
+Migrating to CreateAssignments (20130903101505)
+Migrating to CreateDownvotePosts (20130903102917)
+Migrating to CreateUpvotePosts (20130903102927)
+Migrating to CreateSeenPosts (20130903102934)
+Migrating to CreateWatchLaterPosts (20130903102943)
+Migrating to CreateSubscribers (20130903102959)
+Migrating to AddEmailAndUsernameToUser (20130903105833)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.2ms)[0m  [1mALTER TABLE "users" ADD COLUMN "email" character varying(255)[0m
+  [1m[35m (2.9ms)[0m  ALTER TABLE "users" ADD COLUMN "username" character varying(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD COLUMN "password_hash" character varying(255)[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD COLUMN "password_salt" character varying(255)
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130903105833')[0m
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+Migrating to CreatePosts (20130903100328)
+Migrating to CreateTags (20130903100413)
+Migrating to CreateAssignments (20130903101505)
+Migrating to CreateDownvotePosts (20130903102917)
+Migrating to CreateUpvotePosts (20130903102927)
+Migrating to CreateSeenPosts (20130903102934)
+Migrating to CreateWatchLaterPosts (20130903102943)
+Migrating to CreateSubscribers (20130903102959)
+Migrating to AddEmailAndUsernameToUser (20130903105833)
+Migrating to AddTitleAndDescriptionToPost (20130903110051)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.2ms)[0m  [1mALTER TABLE "posts" ADD COLUMN "title" character varying(255)[0m
+  [1m[35m (433.5ms)[0m  ALTER TABLE "posts" ADD COLUMN "url" character varying(255)
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "posts" ADD COLUMN "user_id" integer[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "posts" ADD COLUMN "vote" integer
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "posts" ADD COLUMN "description" text[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130903110051')
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+Migrating to CreatePosts (20130903100328)
+Migrating to CreateTags (20130903100413)
+Migrating to CreateAssignments (20130903101505)
+Migrating to CreateDownvotePosts (20130903102917)
+Migrating to CreateUpvotePosts (20130903102927)
+Migrating to CreateSeenPosts (20130903102934)
+Migrating to CreateWatchLaterPosts (20130903102943)
+Migrating to CreateSubscribers (20130903102959)
+Migrating to AddEmailAndUsernameToUser (20130903105833)
+Migrating to AddTitleAndDescriptionToPost (20130903110051)
+Migrating to AddNameToTag (20130903110618)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.3ms)[0m  [1mALTER TABLE "tags" ADD COLUMN "name" character varying(255)[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130903110618')
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2013-09-03 16:36:47 +0530
+Connecting to database specified by database.yml
+Served asset /rails.png - 304 Not Modified (1ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2013-09-03 16:36:49 +0530
+Served asset /rails.png - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-09-03 16:36:52 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Compiled application.css  (2ms)  (pid 2477)
+Compiled application.js  (3ms)  (pid 2477)
+Completed 500 Internal Server Error in 177ms
+
+ActionView::Template::Error (undefined local variable or method `sessions_path' for #<#<Class:0x00000100b8a118>:0x00000100df8508>):
+    47:     <div class="row-fluid">
+    48:         <div class="span12">
+    49:             <div class="span5">
+    50:               <%= form_tag sessions_path, :class => 'form-horizontal'  do %>
+    51:   				<p class="help-block">
+    52:     				<%= label_tag :email %>
+    53:     			</p>
+  app/views/layouts/application.html.erb:50:in `_app_views_layouts_application_html_erb___1223808726747340555_2154741960'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-09-03 16:36:52 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 500 Internal Server Error in 50ms
+
+ActionView::Template::Error (undefined local variable or method `sessions_path' for #<#<Class:0x00000100b8a118>:0x00000101584038>):
+    47:     <div class="row-fluid">
+    48:         <div class="span12">
+    49:             <div class="span5">
+    50:               <%= form_tag sessions_path, :class => 'form-horizontal'  do %>
+    51:   				<p class="help-block">
+    52:     				<%= label_tag :email %>
+    53:     			</p>
+  app/views/layouts/application.html.erb:50:in `_app_views_layouts_application_html_erb___1223808726747340555_2154741960'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.7ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2013-09-03 16:38:55 +0530
+Connecting to database specified by database.yml
+Served asset /rails.png - 304 Not Modified (1ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2013-09-03 16:38:57 +0530
+Served asset /rails.png - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-09-03 16:39:01 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Compiled sesstions.css  (5ms)  (pid 2486)
+Compiled application.css  (12ms)  (pid 2486)
+Compiled sesstions.js  (136ms)  (pid 2486)
+Compiled application.js  (151ms)  (pid 2486)
+Completed 500 Internal Server Error in 354ms
+
+ActionView::Template::Error (undefined local variable or method `sessions_path' for #<#<Class:0x000001038276a8>:0x00000100dd9888>):
+    47:     <div class="row-fluid">
+    48:         <div class="span12">
+    49:             <div class="span5">
+    50:               <%= form_tag sessions_path, :class => 'form-horizontal'  do %>
+    51:   				<p class="help-block">
+    52:     				<%= label_tag :email %>
+    53:     			</p>
+  app/views/layouts/application.html.erb:50:in `_app_views_layouts_application_html_erb__4551405646930812418_2188648780'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-09-03 16:39:01 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 31ms
+
+ActionView::Template::Error (undefined local variable or method `sessions_path' for #<#<Class:0x000001038276a8>:0x0000010484ce20>):
+    47:     <div class="row-fluid">
+    48:         <div class="span12">
+    49:             <div class="span5">
+    50:               <%= form_tag sessions_path, :class => 'form-horizontal'  do %>
+    51:   				<p class="help-block">
+    52:     				<%= label_tag :email %>
+    53:     			</p>
+  app/views/layouts/application.html.erb:50:in `_app_views_layouts_application_html_erb__4551405646930812418_2188648780'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.1ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2013-09-03 16:40:37 +0530
+Connecting to database specified by database.yml
+Served asset /rails.png - 304 Not Modified (1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 16:41:30 +0530
+Connecting to database specified by database.yml
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 103ms (Views: 77.1ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /sesstions.css - 200 OK (1ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /posts.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /application.css - 200 OK (10ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /downvote_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /subscribers.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /seen_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /tags.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /upvote_posts.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /users.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /sesstions.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (18ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /downvote_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /posts.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /seen_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /subscribers.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /tags.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /upvote_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 16:41:31 +0530
+Served asset /application.js - 200 OK (10ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"afys2PJXI96vkaTcTZEngEyQiUqSI7JsLsgH8e/36x4=", "title"=>"Sample Title", "url"=>"http://crowdlink.com", "description"=>"lovely crowd link", "commit"=>"Submit"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (55.9ms)[0m  [1mINSERT INTO "posts" ("created_at", "description", "title", "updated_at", "url", "user_id", "vote") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Tue, 03 Sep 2013 11:16:38 UTC +00:00], ["description", nil], ["title", nil], ["updated_at", Tue, 03 Sep 2013 11:16:38 UTC +00:00], ["url", nil], ["user_id", nil], ["vote", nil]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 69ms (ActiveRecord: 56.8ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered posts/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 16:46:38 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-09-03 16:46:41 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (43.1ms)
+Completed 500 Internal Server Error in 46ms
+
+ActionView::Template::Error (undefined method `username' for nil:NilClass):
+    5:     <div class="box-wrap">
+    6:          <h3 class="box-title">
+    7:             <u><%= link_to post.title, post.url, target: '_blank' %></u>
+    8:         <span class="pull-right meta">by <%= link_to post.user.username, '#'%>
+    9: </span>
+    10: </h3>
+    11: 
+  app/views/posts/index.html.erb:8:in `block in _app_views_posts_index_html_erb___4192561362977463564_2170742760'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___4192561362977463564_2170742760'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (24.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-09-03 16:46:58 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 3ms
+
+ActionView::Template::Error (undefined method `username' for nil:NilClass):
+    5:     <div class="box-wrap">
+    6:          <h3 class="box-title">
+    7:             <u><%= link_to post.title, post.url, target: '_blank' %></u>
+    8:         <span class="pull-right meta">by <%= link_to post.user.username, '#'%>
+    9: </span>
+    10: </h3>
+    11: 
+  app/views/posts/index.html.erb:8:in `block in _app_views_posts_index_html_erb___4192561362977463564_2170742760'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___4192561362977463564_2170742760'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 16:47:01 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `username' for nil:NilClass):
+    5:     <div class="box-wrap">
+    6:          <h3 class="box-title">
+    7:             <u><%= link_to post.title, post.url, target: '_blank' %></u>
+    8:         <span class="pull-right meta">by <%= link_to post.user.username, '#'%>
+    9: </span>
+    10: </h3>
+    11: 
+  app/views/posts/index.html.erb:8:in `block in _app_views_posts_index_html_erb___4192561362977463564_2170742760'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___4192561362977463564_2170742760'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 16:47:04 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `username' for nil:NilClass):
+    5:     <div class="box-wrap">
+    6:          <h3 class="box-title">
+    7:             <u><%= link_to post.title, post.url, target: '_blank' %></u>
+    8:         <span class="pull-right meta">by <%= link_to post.user.username, '#'%>
+    9: </span>
+    10: </h3>
+    11: 
+  app/views/posts/index.html.erb:8:in `block in _app_views_posts_index_html_erb___4192561362977463564_2170742760'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___4192561362977463564_2170742760'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.1ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/users" for 127.0.0.1 at 2013-09-03 17:02:16 +0530
+Connecting to database specified by database.yml
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 124ms (Views: 78.4ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:16 +0530
+Served asset /application.css - 304 Not Modified (38ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:16 +0530
+Served asset /posts.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:16 +0530
+Served asset /downvote_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /seen_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /sesstions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /subscribers.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /tags.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /upvote_posts.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /users.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /downvote_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /sesstions.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /seen_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /tags.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /subscribers.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /upvote_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 17:02:17 +0530
+Served asset /application.js - 304 Not Modified (30ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 17:02:29 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (8.5ms)
+Completed 500 Internal Server Error in 22ms
+
+ActionView::Template::Error (undefined method `username' for nil:NilClass):
+    5:     <div class="box-wrap">
+    6:          <h3 class="box-title">
+    7:             <u><%= link_to post.title, post.url, target: '_blank' %></u>
+    8:         <span class="pull-right meta">by <%= link_to post.user.username, '#'%>
+    9: </span>
+    10: </h3>
+    11: 
+  app/views/posts/index.html.erb:8:in `block in _app_views_posts_index_html_erb__3101337432994487957_2154018200'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3101337432994487957_2154018200'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 17:02:33 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 18ms
+
+ActionView::Template::Error (undefined method `username' for nil:NilClass):
+    5:     <div class="box-wrap">
+    6:          <h3 class="box-title">
+    7:             <u><%= link_to post.title, post.url, target: '_blank' %></u>
+    8:         <span class="pull-right meta">by <%= link_to post.user.username, '#'%>
+    9: </span>
+    10: </h3>
+    11: 
+  app/views/posts/index.html.erb:8:in `block in _app_views_posts_index_html_erb__3101337432994487957_2154018200'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3101337432994487957_2154018200'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (26.9ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+Migrating to CreatePosts (20130903100328)
+Migrating to CreateTags (20130903100413)
+Migrating to CreateAssignments (20130903101505)
+Migrating to CreateDownvotePosts (20130903102917)
+Migrating to CreateUpvotePosts (20130903102927)
+Migrating to CreateSeenPosts (20130903102934)
+Migrating to CreateWatchLaterPosts (20130903102943)
+Migrating to CreateSubscribers (20130903102959)
+Migrating to AddEmailAndUsernameToUser (20130903105833)
+Migrating to AddTitleAndDescriptionToPost (20130903110051)
+Migrating to AddNameToTag (20130903110618)
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 17:12:50 +0530
+Connecting to database specified by database.yml
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (114.1ms)
+Completed 500 Internal Server Error in 172ms
+
+ActionView::Template::Error (Could not find the source association(s) :tag or :tags in model Assignment. Try 'has_many :tags, :through => :assignments, :source => <name>'. Is it one of :post?):
+    12:   <div class="box-data clearfix">
+    13:       <div class="box-services">
+    14:           <p class="tags clearfix">
+    15:           	<% post.tags.each do |tag| %>
+    16:             	<%= link_to tag.name, tag%>
+    17:              <% end %>
+    18:            </p>
+  app/views/posts/index.html.erb:15:in `block in _app_views_posts_index_html_erb___424688105672167554_2171626640'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___424688105672167554_2171626640'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.4ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+Migrating to CreatePosts (20130903100328)
+Migrating to CreateTags (20130903100413)
+Migrating to CreateAssignments (20130903101505)
+Migrating to CreateDownvotePosts (20130903102917)
+Migrating to CreateUpvotePosts (20130903102927)
+Migrating to CreateSeenPosts (20130903102934)
+Migrating to CreateWatchLaterPosts (20130903102943)
+Migrating to CreateSubscribers (20130903102959)
+Migrating to AddEmailAndUsernameToUser (20130903105833)
+Migrating to AddTitleAndDescriptionToPost (20130903110051)
+Migrating to AddNameToTag (20130903110618)
+Migrating to RemoveColumns (20130903114740)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "assigments" DROP "user_id"[0m
+PG::UndefinedTable: ERROR:  relation "assigments" does not exist
+: ALTER TABLE "assigments" DROP "user_id"
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+Migrating to CreatePosts (20130903100328)
+Migrating to CreateTags (20130903100413)
+Migrating to CreateAssignments (20130903101505)
+Migrating to CreateDownvotePosts (20130903102917)
+Migrating to CreateUpvotePosts (20130903102927)
+Migrating to CreateSeenPosts (20130903102934)
+Migrating to CreateWatchLaterPosts (20130903102943)
+Migrating to CreateSubscribers (20130903102959)
+Migrating to AddEmailAndUsernameToUser (20130903105833)
+Migrating to AddTitleAndDescriptionToPost (20130903110051)
+Migrating to AddNameToTag (20130903110618)
+Migrating to RemoveColumns (20130903114740)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.6ms)[0m  [1mALTER TABLE "assignments" DROP "user_id"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+Migrating to CreatePosts (20130903100328)
+Migrating to CreateTags (20130903100413)
+Migrating to CreateAssignments (20130903101505)
+Migrating to CreateDownvotePosts (20130903102917)
+Migrating to CreateUpvotePosts (20130903102927)
+Migrating to CreateSeenPosts (20130903102934)
+Migrating to CreateWatchLaterPosts (20130903102943)
+Migrating to CreateSubscribers (20130903102959)
+Migrating to AddEmailAndUsernameToUser (20130903105833)
+Migrating to AddTitleAndDescriptionToPost (20130903110051)
+Migrating to AddNameToTag (20130903110618)
+Migrating to RemoveColumns (20130903114740)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.3ms)[0m  [1mALTER TABLE "assignments" DROP "user_id"[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "assignments" ADD COLUMN "tag_id" integer
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130903114740')[0m
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 17:37:33 +0530
+Connecting to database specified by database.yml
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (37.5ms)
+Completed 500 Internal Server Error in 95ms
+
+ActionView::Template::Error (Could not find the source association(s) :tag or :tags in model Assignment. Try 'has_many :tags, :through => :assignments, :source => <name>'. Is it one of :post?):
+    12:   <div class="box-data clearfix">
+    13:       <div class="box-services">
+    14:           <p class="tags clearfix">
+    15:           	<% post.tags.each do |tag| %>
+    16:             	<%= link_to tag.name, tag%>
+    17:              <% end %>
+    18:            </p>
+  app/views/posts/index.html.erb:15:in `block in _app_views_posts_index_html_erb___1892532140431755517_2185277820'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___1892532140431755517_2185277820'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-09-03 17:37:37 +0530
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" 
+  Rendered users/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 108ms (Views: 97.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /application.css - 304 Not Modified (20ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /downvote_posts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /seen_posts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /posts.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /sesstions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /subscribers.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /tags.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /upvote_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /downvote_posts.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /seen_posts.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /sesstions.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /subscribers.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /tags.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /upvote_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:38 +0530
+Served asset /application.js - 304 Not Modified (12ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-09-03 17:37:43 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 3ms
+
+ActionView::Template::Error (Could not find the source association(s) :tag or :tags in model Assignment. Try 'has_many :tags, :through => :assignments, :source => <name>'. Is it one of :post?):
+    12:   <div class="box-data clearfix">
+    13:       <div class="box-services">
+    14:           <p class="tags clearfix">
+    15:           	<% post.tags.each do |tag| %>
+    16:             	<%= link_to tag.name, tag%>
+    17:              <% end %>
+    18:            </p>
+  app/views/posts/index.html.erb:15:in `block in _app_views_posts_index_html_erb___1892532140431755517_2185277820'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___1892532140431755517_2185277820'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (13.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2013-09-03 17:37:44 +0530
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (1.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered posts/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 18ms (Views: 13.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:45 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/tags" for 127.0.0.1 at 2013-09-03 17:37:49 +0530
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" [0m
+  Rendered tags/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 40ms (Views: 30.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 17:37:50 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 17:46:13 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (Could not find the source association(s) :tag or :tags in model Assignment. Try 'has_many :tags, :through => :assignments, :source => <name>'. Is it one of :post?):
+    12:   <div class="box-data clearfix">
+    13:       <div class="box-services">
+    14:           <p class="tags clearfix">
+    15:           	<% post.tags.each do |tag| %>
+    16:             	<%= link_to tag.name, tag%>
+    17:              <% end %>
+    18:            </p>
+  app/views/posts/index.html.erb:15:in `block in _app_views_posts_index_html_erb___1892532140431755517_2185277820'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___1892532140431755517_2185277820'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 17:48:36 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (Could not find the source association(s) :tag or :tags in model Assignment. Try 'has_many :tags, :through => :assignments, :source => <name>'. Is it one of :post?):
+    12:   <div class="box-data clearfix">
+    13:       <div class="box-services">
+    14:           <p class="tags clearfix">
+    15:           	<% post.tags.each do |tag| %>
+    16:             	<%= link_to tag.name, tag%>
+    17:              <% end %>
+    18:            </p>
+  app/views/posts/index.html.erb:15:in `block in _app_views_posts_index_html_erb___1892532140431755517_2185277820'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___1892532140431755517_2185277820'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 17:50:52 +0530
+Connecting to database specified by database.yml
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (37.7ms)
+Completed 500 Internal Server Error in 76ms
+
+ActionView::Template::Error (Could not find the source association(s) :tag or :tags in model Assignment. Try 'has_many :tags, :through => :assignments, :source => <name>'. Is it one of :post?):
+    12:   <div class="box-data clearfix">
+    13:       <div class="box-services">
+    14:           <p class="tags clearfix">
+    15:           	<% post.tags.each do |tag| %>
+    16:             	<%= link_to tag.name, tag%>
+    17:              <% end %>
+    18:            </p>
+  app/views/posts/index.html.erb:15:in `block in _app_views_posts_index_html_erb___2884054859316307913_2185262020'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___2884054859316307913_2185262020'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 17:50:54 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (Could not find the source association(s) :tag or :tags in model Assignment. Try 'has_many :tags, :through => :assignments, :source => <name>'. Is it one of :post?):
+    12:   <div class="box-data clearfix">
+    13:       <div class="box-services">
+    14:           <p class="tags clearfix">
+    15:           	<% post.tags.each do |tag| %>
+    16:             	<%= link_to tag.name, tag%>
+    17:              <% end %>
+    18:            </p>
+  app/views/posts/index.html.erb:15:in `block in _app_views_posts_index_html_erb___2884054859316307913_2185262020'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___2884054859316307913_2185262020'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:03:22 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (Could not find the source association(s) :tag or :tags in model Assignment. Try 'has_many :tags, :through => :assignments, :source => <name>'. Is it one of :post?):
+    12:   <div class="box-data clearfix">
+    13:       <div class="box-services">
+    14:           <p class="tags clearfix">
+    15:           	<% post.tags.each do |tag| %>
+    16:             	<%= link_to tag.name, tag%>
+    17:              <% end %>
+    18:            </p>
+  app/views/posts/index.html.erb:15:in `block in _app_views_posts_index_html_erb___2884054859316307913_2185262020'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___2884054859316307913_2185262020'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:03:45 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (Could not find the source association(s) :tag or :tags in model Assignment. Try 'has_many :tags, :through => :assignments, :source => <name>'. Is it one of :post?):
+    12:   <div class="box-data clearfix">
+    13:       <div class="box-services">
+    14:           <p class="tags clearfix">
+    15:           	<% post.tags.each do |tag| %>
+    16:             	<%= link_to tag.name, tag%>
+    17:              <% end %>
+    18:            </p>
+  app/views/posts/index.html.erb:15:in `block in _app_views_posts_index_html_erb___2884054859316307913_2185262020'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb___2884054859316307913_2185262020'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.1ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130903100321)
+Migrating to CreatePosts (20130903100328)
+Migrating to CreateTags (20130903100413)
+Migrating to CreateAssignments (20130903101505)
+Migrating to CreateDownvotePosts (20130903102917)
+Migrating to CreateUpvotePosts (20130903102927)
+Migrating to CreateSeenPosts (20130903102934)
+Migrating to CreateWatchLaterPosts (20130903102943)
+Migrating to CreateSubscribers (20130903102959)
+Migrating to AddEmailAndUsernameToUser (20130903105833)
+Migrating to AddTitleAndDescriptionToPost (20130903110051)
+Migrating to AddNameToTag (20130903110618)
+Migrating to RemoveColumns (20130903114740)
+Migrating to AddIndex (20130903123959)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.4ms)[0m  [1mCREATE INDEX "index_assignments_on_tag_id_and_post_id" ON "assignments" ("tag_id", "post_id")[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130903123959')
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Connecting to database specified by database.yml
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  [1m[35mTag Load (1.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 2
+  [1m[36mTag Load (0.8ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (70.7ms)
+Completed 200 OK in 210ms (Views: 156.9ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /application.css - 304 Not Modified (18ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /downvote_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /sesstions.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /seen_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /subscribers.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /tags.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /upvote_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /jquery.js - 304 Not Modified (62ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:51 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:52 +0530
+Served asset /downvote_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:52 +0530
+Served asset /posts.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:52 +0530
+Served asset /sesstions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:52 +0530
+Served asset /seen_posts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:52 +0530
+Served asset /subscribers.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:52 +0530
+Served asset /tags.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:52 +0530
+Served asset /upvote_posts.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:52 +0530
+Served asset /users.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:52 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 18:21:52 +0530
+Served asset /application.js - 304 Not Modified (21ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36mTag Load (0.6ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 2[0m
+  [1m[35mTag Load (0.7ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 1
+  Rendered posts/index.html.erb within layouts/application (6.3ms)
+Compiled posts.css  (22ms)  (pid 2865)
+Compiled application.css  (3ms)  (pid 2865)
+Completed 200 OK in 79ms (Views: 76.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /application.css - 304 Not Modified (28ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /posts.css - 200 OK (2ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:36 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 18:22:37 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  [1m[35mTag Load (0.7ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 2
+  [1m[36mTag Load (0.7ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (6.1ms)
+Compiled scaffolds.css  (18ms)  (pid 2865)
+Compiled application.css  (2ms)  (pid 2865)
+Completed 200 OK in 58ms (Views: 55.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /application.css - 304 Not Modified (19ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /scaffolds.css - 200 OK (3ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:26 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/seen_posts/create?post_id=2" for 127.0.0.1 at 2013-09-03 18:23:52 +0530
+Processing by SeenPostsController#create as HTML
+  Parameters: {"post_id"=>"2"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:23:52 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36mTag Load (0.6ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 2[0m
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 1
+  Rendered posts/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 18ms (Views: 15.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 18:23:53 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-09-03 18:24:04 +0530
+
+ActionController::RoutingError (uninitialized constant SessionsController):
+  activesupport (3.2.12) lib/active_support/inflector/methods.rb:230:in `block in constantize'
+  activesupport (3.2.12) lib/active_support/inflector/methods.rb:229:in `each'
+  activesupport (3.2.12) lib/active_support/inflector/methods.rb:229:in `constantize'
+  actionpack (3.2.12) lib/action_dispatch/routing/route_set.rb:69:in `controller_reference'
+  actionpack (3.2.12) lib/action_dispatch/routing/route_set.rb:54:in `controller'
+  actionpack (3.2.12) lib/action_dispatch/routing/route_set.rb:32:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.12) lib/action_dispatch/routing/route_set.rb:601:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.12) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.12) lib/active_support/callbacks.rb:405:in `_run__2882558524134621912__call__691672501695023492__callbacks'
+  activesupport (3.2.12) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.12) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.12) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-09-03 18:25:10 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"afys2PJXI96vkaTcTZEngEyQiUqSI7JsLsgH8e/36x4=", "email"=>"pornpapa69@gmail.com", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'pornpapa69@gmail.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 467ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36mTag Load (0.6ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 2[0m
+  [1m[35mTag Load (1.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 1
+  Rendered posts/index.html.erb within layouts/application (98.4ms)
+Completed 200 OK in 110ms (Views: 106.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:12 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:13 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:13 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:13 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:13 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/seen_posts/create?post_id=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Processing by SeenPostsController#create as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mUser Load (21.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mSeenPost Load (0.7ms)[0m  SELECT "seen_posts".* FROM "seen_posts" WHERE "seen_posts"."user_id" = 1 AND "seen_posts"."post_id" = 1 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (21.5ms)[0m  INSERT INTO "seen_posts" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Tue, 03 Sep 2013 12:55:19 UTC +00:00], ["post_id", 1], ["updated_at", Tue, 03 Sep 2013 12:55:19 UTC +00:00], ["user_id", 1]]
+  [1m[36m (15.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 75ms (ActiveRecord: 63.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36mTag Load (0.6ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 2[0m
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 1
+  Rendered posts/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 34ms (Views: 30.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 18:25:19 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:25:53 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (61.0ms)
+Completed 500 Internal Server Error in 64ms
+
+ActionView::Template::Error (undefined method `username' for nil:NilClass):
+    5:     <div class="box-wrap">
+    6:          <h3 class="box-title">
+    7:             <u><%= link_to post.title, post.url, target: '_blank' %></u>
+    8:         <span class="pull-right meta">by <%= link_to post.user.username, '#'%>
+    9: </span>
+    10: </h3>
+    11: 
+  app/views/posts/index.html.erb:8:in `block in _app_views_posts_index_html_erb__121116205336873519_2154808360'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__121116205336873519_2154808360'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:25:57 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `username' for nil:NilClass):
+    5:     <div class="box-wrap">
+    6:          <h3 class="box-title">
+    7:             <u><%= link_to post.title, post.url, target: '_blank' %></u>
+    8:         <span class="pull-right meta">by <%= link_to post.user.username, '#'%>
+    9: </span>
+    10: </h3>
+    11: 
+  app/views/posts/index.html.erb:8:in `block in _app_views_posts_index_html_erb__121116205336873519_2154808360'
+  app/views/posts/index.html.erb:4:in `each'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__121116205336873519_2154808360'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 18ms (Views: 15.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 18:27:27 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 1
+  Rendered posts/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 16ms (Views: 13.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:26 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 18:29:27 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/downvote_posts/create?post_id=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Processing by DownvotePostsController#create as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDownvotePost Load (0.6ms)[0m  SELECT "downvote_posts".* FROM "downvote_posts" WHERE "downvote_posts"."user_id" = 1 AND "downvote_posts"."post_id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (13.9ms)[0m  INSERT INTO "downvote_posts" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Tue, 03 Sep 2013 13:09:09 UTC +00:00], ["post_id", 1], ["updated_at", Tue, 03 Sep 2013 13:09:09 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 42ms (ActiveRecord: 18.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mTag Load (0.7ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 1
+  Rendered posts/index.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 17ms (Views: 14.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 18:39:09 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "assignments" ON "tags"."id" = "assignments"."tag_id" WHERE "assignments"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 47ms (Views: 44.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /downvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /sesstions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /seen_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /subscribers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /upvote_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.css?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /watch_later_posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:47 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/downvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /downvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/seen_posts.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /seen_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sesstions.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /sesstions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/subscribers.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /subscribers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /tags.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/upvote_posts.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /upvote_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/watch_later_posts.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /watch_later_posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-03 21:26:48 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2013-09-03 21:28:49 +0530
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"afys2PJXI96vkaTcTZEngEyQiUqSI7JsLsgH8e/36x4=", "title"=>"Google", "url"=>"http://www.google.com", "description"=>"Google link", "commit"=>"Submit"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `desription=' for #<Post:0x00000102541e80>):
+  app/controllers/posts_controller.rb:46:in `create'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (30.3ms)

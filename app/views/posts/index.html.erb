@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row content">
+    <div class="span7">
+  <% @posts.each do |post| %>
+    <div class="box-wrap">
+         <h3 class="box-title">
+            <u><%= link_to post.title, post.url, target: '_blank' %></u>
+        <span class="pull-right meta">by <%= link_to post.user.username, '#'%>
+</span>
+</h3>
+
+  <div class="box-data clearfix">
+      <div class="box-services">
+          <p class="tags clearfix">
+          	<% post.tags.each do |tag| %>
+            	<%= link_to tag.name, tag%>
+             <% end %>
+           </p>
+            </div>
+            <div class="box-description">
+                <p><%= post.description %></p>
+            </div>
+            <button class="btn btn-mini btn-inverse show-extra-info" type="button">
+            	<%= link_to "Seen it", :controller => :seen_posts, :action => :create, :post_id => post.id %>
+            </button>
+            <!--<%= link_to "Seen it", :controller => :seen_posts, :action => :create, :post_id => post.id %>-->
+            <button class="btn btn-mini btn-inverse show-extra-info" type="button">
+            	<%= link_to "Watch Later", :controller => :watch_later_posts, :action => :create, :post_id => post.id %>
+            </button>
+            <button class="btn btn-mini btn-inverse show-extra-info" type="button">
+            	<%= link_to "Like", :controller => :upvote_posts, :action => :create, :post_id => post.id %>
+            </button>
+            <button class="btn btn-mini btn-inverse show-extra-info" type="button">
+            	<%= link_to "Dislike", :controller => :downvote_posts, :action => :create, :post_id => post.id %>
+            </button>
+        </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="span5">
+  </div>
+</div>
+</div>

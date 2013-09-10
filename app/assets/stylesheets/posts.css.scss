@@ -1,0 +1,103 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box-wrap {
+    background-color:#FFFFFF;
+    background-position:initial initial;
+    background-repeat:initial initial;
+    border:1px solid #F1F1F1;
+    border-bottom-left-radius:6px;
+    border-bottom-right-radius:6px;
+    border-top-left-radius:6px;
+    border-top-right-radius:6px;
+    margin-bottom:30px;
+}
+*, ::before, ::after {
+    box-sizing:border-box;
+}
+.box-title {
+    background-color:#FCFCFC;
+    background-position:initial initial;
+    background-repeat:initial initial;
+    border-bottom-color:#F1F1F1;
+    border-bottom-left-radius:6px;
+    border-bottom-right-radius:6px;
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    border-top-left-radius:6px;
+    border-top-right-radius:6px;
+    margin-bottom:-5px;
+    padding:10px;
+}
+h3 {
+    font-size:24.5px;
+}
+.meta {
+    font-size:12px;
+    font-weight:normal;
+    padding-top:8px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family:'Crete Round', serif;
+    font-weight:normal;
+    letter-spacing:1px;
+    line-height:1;
+    margin-bottom:30px;
+    margin-top:0;
+}
+.box-data {
+    padding:10px;
+}
+.clearfix {
+    zoom:1;
+}
+.box-services, .box-description {
+    margin-bottom:10px;
+    margin-top:4px;
+}
+a {
+    -webkit-transition:background 0.25s ease-out 0s;
+    color:#EDAE1D;
+    transition:background 0.25s ease-out 0s;
+}
+.tags a, .tagcloud a {
+    -webkit-transition:background 0.25s ease-out 0s;
+    background-color:#3498DB;
+    background-position:initial initial;
+    background-repeat:initial initial;
+    border-bottom-left-radius:2px;
+    border-bottom-right-radius:2px;
+    border-top-left-radius:2px;
+    border-top-right-radius:2px;
+    color:#F1F1F1;
+    display:block;
+    float:left;
+    font-size:0.9em;
+    height:20px;
+    line-height:20px;
+    margin:0 6px 6px 0;
+    padding:0 4px;
+    transition:background 0.25s ease-out 0s;
+}
+.box-services, .box-description {
+    margin-bottom:10px;
+    margin-top:4px;
+}
+.show-extra-info {
+    margin-bottom:1px;
+}
+.btn-inverse {
+    /*-webkit-box-shadow:#BDC3C7 0 4px;*/
+    background-color:#ECF0F1;
+    background-position:initial initial;
+    background-repeat:initial initial;
+    border:1px solid #BDC3C7;
+    /*box-shadow:#BDC3C7 0 4px;*/
+    color:#333333;
+}
+#header .navbar-inner, .btn, .alert, .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, span.label {
+    background-image:none;
+    filter:none;
+    text-shadow:none;
+}
