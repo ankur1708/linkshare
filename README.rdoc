@@ -2,5 +2,3 @@ A webApp allows you to share any link. You can like/share/view/watch-later a lin
 Based on views/likes/watch-later/share, a link will get a rank and based on that rank , link will pushed up the list ie get more visibilty.
 User can request for an invite. Without invitation also, user can share link. 
 
-It is hosted on heroku. Since my friends are using it widely for sharing porn videos links, I can't give the url here.
-Mail me for the url if you want to see it live.
